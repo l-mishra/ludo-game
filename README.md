@@ -23,7 +23,6 @@ This project implements a complete Ludo game with the following features:
 ```
 src/main/java/com/lkm/ludogame/
 ├── board/           # Board and path management
-├── manager/         # Game state management
 ├── model/           # Game entities (Cell, Player, etc.)
 ├── piece/           # Piece-related classes
 ├── repository/      # Game state persistence
