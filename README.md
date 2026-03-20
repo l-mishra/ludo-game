@@ -22,15 +22,14 @@ This project implements a complete Ludo game with the following features:
 
 ```
 src/main/java/com/lkm/ludogame/
-├── board/           # Board and path management
-├── model/           # Game entities (Cell, Player, etc.)
-├── piece/           # Piece-related classes
-├── repository/      # Game state persistence
-├── service/         # Business logic
-├── validator/       # Move validation
-├── LudoGame.java    # Main game logic
+├── model/           # GameState, LudoBoard (aggregate root), PiecePosition, LudoPlayer, MoveResult
+├── piece/           # Piece (id + color + finished), Color
+├── example/         # PureIndexBoardExample — int-only board math (documentation)
+├── LudoGame.java    # Orchestrator + in-memory active/completed games
 └── LudoGameApplication.java
 ```
+
+**Board geometry:** `LudoBoard` uses a **flat 52-index ring** (`(i + steps) % 52`) plus per-color **home lanes** (`HomeLane` steps `0..5`). No linked cell graph. `Piece` does not store position; `LudoBoard` owns `PiecePosition` per piece.
 
 ## Key Features
 

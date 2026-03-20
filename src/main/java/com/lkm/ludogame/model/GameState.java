@@ -4,13 +4,9 @@ import com.lkm.ludogame.piece.Piece;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Builder
 @Data
-@Getter
-@Setter
 public class GameState {
 
   private String id;
@@ -25,6 +21,9 @@ public class GameState {
   }
 
   public LudoPlayer getPlayerByPlayerId(long playerId) {
-    return players.stream().filter(player -> player.getPlayerId() == playerId).findFirst().get();
+    return players.stream()
+        .filter(player -> player.getPlayerId() == playerId)
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Player not found: " + playerId));
   }
 }

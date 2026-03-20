@@ -1,35 +1,30 @@
 package com.lkm.ludogame.piece;
 
-import com.lkm.ludogame.model.Cell;
-import com.lkm.ludogame.model.CellType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.EqualsAndHashCode;
 
+/**
+ * Game piece identity only. Position is tracked by {@link com.lkm.ludogame.model.LudoBoard}.
+ */
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Piece {
 
+  @EqualsAndHashCode.Include
   private final int id;
   private final Color color;
-  private Cell currentCell;
-  private boolean isFinished;
+  private boolean finished;
 
-  public Piece(int id, Color color, Cell currentCell, boolean isFinished) {
+  public Piece(int id, Color color) {
     this.id = id;
     this.color = color;
-    this.currentCell = currentCell;
-    this.isFinished = isFinished;
+    this.finished = false;
   }
 
   @Override
   public String toString() {
-    return "Piece{" +
-        "id=" + id +
-        ", color=" + color +
-        ", currentCellId=" + (currentCell != null ? currentCell.getId() : "null") +
-        ", isFinished=" + isFinished +
-        '}';
+    return "Piece{" + "id=" + id + ", color=" + color + ", finished=" + finished + '}';
   }
 }
