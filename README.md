@@ -88,7 +88,7 @@ mvn spring-boot:run
 
 ## API Endpoints
 
-The game provides REST endpoints for:
+The game provides REST endpoints for: 
 - Creating a new game
 - Making moves
 - Getting game state
